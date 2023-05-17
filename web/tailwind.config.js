@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: 'var(--font-roboto)',
-        alt: 'var(--font-baiJamjuree',
+        alt: 'var(--font-baiJamjuree)',
       },
       colors: {
         gray: {
@@ -83,6 +83,9 @@ module.exports = {
       },
       backgroundSize: {
         stripes: '100% 8px',
+      },
+      fontSize: {
+        '5xl': '2.5rem',
       },
     },
   },
