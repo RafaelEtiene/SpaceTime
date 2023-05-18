@@ -3,7 +3,6 @@ import axios from 'axios'
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 import { prisma } from '../lib/prisma'
-import { userInfo } from 'os'
 
 export async function authRoutes(app: FastifyInstance) {
   app.post('/register', async (request) => {
@@ -57,6 +56,14 @@ export async function authRoutes(app: FastifyInstance) {
         }
       })
     }
-    return { user }
+    const token = app.jwt.sign({
+      name: user.name,
+      avatarUrl: user.avatarUrl,
+    }, {
+      sub: user.id,
+      expiresIn: '30 days',
+    })
+
+    return { token }
   })
 }
